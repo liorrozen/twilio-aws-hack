@@ -3,25 +3,10 @@ import twilio.twiml
 import hashtag
 app = Flask(__name__)
 
-from twitter import *
+import hashtag
+from hashtag import Tweets
 
-
-@app.route("/")
-def home():
-
-    # create twitter API object
-    t = Twitter()
-
-    # perform a basic search
-    # twitter API docs: https://dev.twitter.com/docs/api/1/get/search
-    query = t.search(q = "lazy dog")
-
-    # print how quickly the search completed
-    print "Search complete (%f seconds)" % (query["completed_in"])
-
-    # loop through each of my statuses, and print its content
-    for result in query["results"]:
-        print "(%s) @%s %s" % (result["created_at"], result["from_user"], result["text"])
+tweets = hashtag.Tweets()
 
 
 @app.route("/voice/", methods=['GET', 'POST'])
@@ -43,7 +28,15 @@ def handle_key():
     resp = twilio.twiml.Response()
     digit_pressed = request.values.get( "Digits", None )
 
-    resp.say( "You pressed %s" % digit_pressed )
+    if digit_pressed == "1":
+        tweet = tweets.find_one( "aws" )
+
+    if digit_pressed == "2":
+        tweet = tweets.find_one( "twilio" )
+
+    text = tweet[ "text" ]
+
+    resp.say( text )
 
     return str(resp)
 
