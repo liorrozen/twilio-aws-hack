@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for
+from flask import Flask, request
 import twilio.twiml
 import hashtag
 app = Flask(__name__)
@@ -37,7 +37,7 @@ def handle_key():
 
     text = tweet[ "text" ]
 
-    resp.say( "The latest tweet for that search is: " + text )
+    resp.say( "The latest tweet for your selection is: " + text )
 
     return str(resp)
 
