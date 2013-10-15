@@ -13,14 +13,14 @@ def hello_monkey():
     """Respond to incoming requests."""
     resp = twilio.twiml.Response()
 
-    resp.say("W.T.F?")
+    # resp.say("W.T.F?")
 
-    return str(resp)
+    # return str(resp)
 
-    # g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
-    # g.say( "For foo press 1" )
-    # resp.pause( length = 1 )
-    # g.say( "For bar press 2" )
+    g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
+    g.say( "For foo press 1" )
+    resp.pause( length = 1 )
+    g.say( "For bar press 2" )
 
 
 @app.route("/handle-key", methods=['GET', 'POST'])
