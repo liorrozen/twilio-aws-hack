@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, url_for
 import twilio.twiml
 app = Flask(__name__)
 
@@ -17,7 +17,8 @@ def hello_monkey():
 
     # return str(resp)
 
-    resp.play('/mario.mp3')
+    snd_file = url_for('static', filename='mario.mp3')
+    resp.play( snd_file )
     g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
     g.say( "For foo press 1" )
     g.pause( length = 2 )
