@@ -22,6 +22,8 @@ def hello_monkey():
     resp.pause( length = 1 )
     g.say( "For bar press 2" )
 
+    return str(resp)
+
 
 @app.route("/handle-key", methods=['GET', 'POST'])
 def handle_key():
