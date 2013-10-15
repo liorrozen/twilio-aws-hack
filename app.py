@@ -19,6 +19,7 @@ def hello_monkey():
 
     g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
     g.say( "For foo press 1" )
+    g.pause( length = 2 )
     g.say( "For bar press 2" )
 
     return str(resp)
