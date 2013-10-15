@@ -26,9 +26,13 @@ def hello_monkey():
 
 @app.route("/handle-key", methods=['GET', 'POST'])
 def handle_key():
+
+    resp = twilio.twiml.Response()
     digit_pressed = request.values.get('Digits', None)
 
-    return str( "You pressed %s" % digit_pressed )
+    resp.say( "You pressed %s" % digit_pressed )
+
+    return str(resp)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, port=1337)
