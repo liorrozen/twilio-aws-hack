@@ -8,7 +8,7 @@ def home():
     return "It's ALIVE!!!!!"
 
 
-@app.route("/voice", methods=['GET', 'POST'])
+@app.route("/voice/", methods=['GET', 'POST'])
 def hello_monkey():
     """Respond to incoming requests."""
     resp = twilio.twiml.Response()
