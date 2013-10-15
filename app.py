@@ -10,7 +10,7 @@ from twitter import *
 def home():
 
     # create twitter API object
-    t = twitter.Twitter()
+    t = Twitter()
 
     # perform a basic search
     # twitter API docs: https://dev.twitter.com/docs/api/1/get/search
