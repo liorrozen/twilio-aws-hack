@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "It's ALIVE!?"
+    return "It's ALIVE!?one"
 
 
 @app.route("/voice/", methods=['GET', 'POST'])
