@@ -9,7 +9,7 @@ class Tweets():
 
     twitter = None
 
-    def __init__( self, hashtag ):
+    def __init__( self ):
         self.twitter = Twython(self.APP_KEY, self.APP_SECRET, oauth_version=2)
         self.ACCESS_TOKEN = self.twitter.obtain_access_token()
         self.twitter = Twython(self.APP_KEY, access_token=self.ACCESS_TOKEN)
