@@ -17,6 +17,7 @@ def hello_monkey():
 
     # return str(resp)
 
+    resp.play('mario.mp3')
     g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
     g.say( "For foo press 1" )
     g.pause( length = 2 )
