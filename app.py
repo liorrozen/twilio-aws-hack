@@ -16,7 +16,8 @@ def hello_monkey():
     resp = twilio.twiml.Response()
 
     g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
-    g.say( "For hashtag aws, press 1" )
+    g.say( "For hashtag A.W.S., press 1" )
+    g.pause( length = 1 )
     g.say( "For hashtag twilio, press 2" )
 
     return str(resp)
@@ -36,7 +37,7 @@ def handle_key():
 
     text = tweet[ "text" ]
 
-    resp.say( text )
+    resp.say( "The latest tweet for that search is: " + text )
 
     return str(resp)
 
