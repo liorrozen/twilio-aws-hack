@@ -8,16 +8,26 @@ def home():
     return "It's ALIVE!!!!!"
 
 
-@app.route("/voice/", methods=['GET', 'POST'])
+@app.route("/voice", methods=['GET', 'POST'])
 def hello_monkey():
     """Respond to incoming requests."""
-    # resp = twilio.twiml.Response()
-    # resp.say("Hello Monkey")
-    # return str(resp)
+    resp = twilio.twiml.Response()
 
-    resp = twilio.twiml.Gather()
-    ans = resp.say("Enter something")
-    return str(ans)
+    resp.say("W.T.F?")
+
+    return str(resp)
+
+    # g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
+    # g.say( "For foo press 1" )
+    # resp.pause( length = 1 )
+    # g.say( "For bar press 2" )
+
+
+@app.route("/handle-key", methods=['GET', 'POST'])
+def handle_key():
+    digit_pressed = request.values.get('Digits', None)
+
+    return str( "You pressed %s" % digit_pressed )
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, port=1337)
