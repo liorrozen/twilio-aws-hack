@@ -9,7 +9,7 @@ from hashtag import Tweets
 tweets = hashtag.Tweets()
 
 
-@app.route("/voice/", methods=['GET', 'POST'])
+@app.route( "/voice/", methods = [ "GET", "POST" ] )
 def hello_monkey():
     """Respond to incoming requests."""
 
@@ -20,26 +20,25 @@ def hello_monkey():
     g.pause( length = 1 )
     g.say( "For hashtag twilio, press 2" )
 
-    return str(resp)
+    return str( resp )
 
 
-@app.route( "/handle-key", methods=[ "GET", "POST" ] )
+@app.route( "/handle-key", methods = [ "GET", "POST" ] )
 def handle_key():
 
     resp = twilio.twiml.Response()
     digit_pressed = request.values.get( "Digits", None )
 
-    if digit_pressed == "1":
-        tweet = tweets.find_one( "aws" )
-
-    if digit_pressed == "2":
-        tweet = tweets.find_one( "twilio" )
+    tweet = {
+        "1" : tweets.find_one( "aws" ),
+        "2" : tweets.find_one( "twilio" )
+    }[ digit_pressed ]
 
     text = tweet[ "text" ]
 
-    resp.say( "The latest tweet for your selection is: " + text )
+    resp.say( "The latest tweet for your selection is: %s" % text )
 
-    return str(resp)
+    return str( resp )
 
 if __name__ == "__main__":
     app.run( host = "0.0.0.0", debug = True, port = 1337 )
