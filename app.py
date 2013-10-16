@@ -1,13 +1,11 @@
 from flask import Flask, request
 import twilio.twiml
-import hashtag
-app = Flask(__name__)
 
-import hashtag
 from hashtag import Tweets
 
-tweets = hashtag.Tweets()
+app = Flask(__name__)
 
+tweets = hashtag.Tweets()
 
 @app.route( "/voice/", methods = [ "GET", "POST" ] )
 def hello_monkey():
