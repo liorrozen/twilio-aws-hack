@@ -2,7 +2,7 @@ import sys
 import subprocess
 
 # install
-pipfile = "requirements.txt"
+pipfile = "dependencies"
 cmd = "pip install -r %s --user" % pipfile
 print "Run: %s" % cmd
 subprocess.call( cmd, shell = True )
