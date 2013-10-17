@@ -2,19 +2,20 @@ import site
 site.addsitedir('/home/lix/bin/twilio-aws-hack/site-packages')
 
 from flask import Flask, request
+from twilio.twiml import Response
 import twilio.twiml
 
 from hashtag import Tweets
 
 app = Flask(__name__)
 
-tweets = hashtag.Tweets()
+tweets = Tweets()
 
 @app.route( "/voice/", methods = [ "GET", "POST" ] )
 def hello_monkey():
     """Respond to incoming requests."""
 
-    resp = twilio.twiml.Response()
+    resp = Response()
 
     g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
     g.say( "For hashtag A.W.S., press 1" )
@@ -27,7 +28,7 @@ def hello_monkey():
 @app.route( "/handle-key", methods = [ "GET", "POST" ] )
 def handle_key():
 
-    resp = twilio.twiml.Response()
+    resp = Response()
     digit_pressed = request.values.get( "Digits", None )
 
     tweet = {
