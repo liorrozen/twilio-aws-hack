@@ -1,8 +1,7 @@
 from fabric.api import env, run, cd
 
-# Kill previous process
+# TODO: Kill previous process
 print "Killing previous process"
-run( "cal" )
 
 env.host_string = "184.72.219.16"
 env.user = "ubuntu"
