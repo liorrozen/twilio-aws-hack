@@ -20,6 +20,9 @@ class Setup( object ):
 
 
     def install( self ):
+
+        subprocess.call( "rm -rf site-packages", shell = True )
+
         pipfile = "dependencies"
         target = "site-packages"
         exists_action = "i"
