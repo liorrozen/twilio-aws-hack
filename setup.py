@@ -19,9 +19,11 @@ class Setup( object ):
             print "Unknown command"
 
 
-    def install():
+    def install( self ):
         pipfile = "dependencies"
-        install_cmd = "pip install -r %s --target site-packages" % pipfile
+        target = "site-packages"
+        exists_action = "i"
+        install_cmd = "pip install -r %s --target %s --exists-action %s" % ( pipfile, target, exists_action )
         subprocess.call( install_cmd, shell = True )
 
     
