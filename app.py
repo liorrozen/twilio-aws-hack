@@ -1,5 +1,10 @@
 import site
-site.addsitedir('/home/lix/bin/twilio-aws-hack/site-packages')
+import sys
+import os
+
+full_path = os.path.realpath(__file__)
+path, file = os.path.split(full_path)
+site.addsitedir( path + '/site-packages' )
 
 from flask import Flask, request
 from twilio.twiml import Response
