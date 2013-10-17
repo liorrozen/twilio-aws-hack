@@ -1,3 +1,7 @@
+import site
+import sys
+import os
+
 full_path = os.path.realpath(__file__)
 path, file = os.path.split(full_path)
 site.addsitedir( path + '/site-packages' )
