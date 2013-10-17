@@ -11,5 +11,5 @@ with cd( repo_dir ):
     run( "git reset --hard" )
     run( "touch yeaaaaaaaa" )
     run( "git pull" )
-    run( "python setup.py" )
+    run( "python setup.py install" )
     
