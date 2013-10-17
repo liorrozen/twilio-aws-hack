@@ -1,3 +1,6 @@
+import site
+site.addsitedir('/home/lix/bin/twilio-aws-hack/site-packages')
+
 from flask import Flask, request
 import twilio.twiml
 
