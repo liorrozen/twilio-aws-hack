@@ -1,3 +1,8 @@
+import sys
+import os
+root = os.path.abspath( __file__ + "/site-packages" )
+sys.path.insert( 1, root )
+
 from fabric.api import env, run, cd
 # Kill previous process
 print "Killing previous process"
