@@ -23,9 +23,11 @@ def hello_monkey():
     resp = Response()
 
     g = resp.gather( numDigits = 1, action = "/handle-key", method = "POST" )
-    g.say( "For hashtag A.W.S., press 1" )
+    g.say( "For hashtag Tel Aviv, press 1" )
     g.pause( length = 1 )
-    g.say( "For hashtag twilio, press 2" )
+    g.say( "For hashtag A.W.S., press 2" )
+    g.pause( length = 1 )
+    g.say( "For hashtag twilio, press 3" )
 
     return str( resp )
 
@@ -37,8 +39,9 @@ def handle_key():
     digit_pressed = request.values.get( "Digits", None )
 
     tweet = {
-        "1" : tweets.find_one( "aws" ),
-        "2" : tweets.find_one( "twilio" )
+        "1" : tweets.find_one( "telaviv" ),
+        "2" : tweets.find_one( "aws" ),
+        "3" : tweets.find_one( "twilio" )
     }[ digit_pressed ]
 
     text = tweet[ "text" ]
