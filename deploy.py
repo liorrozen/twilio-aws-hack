@@ -30,4 +30,3 @@ with cd( repo_dir ):
     run( "nohup python app.py &" )
 
 fabric.network.disconnect_all()
-sys.exit()
