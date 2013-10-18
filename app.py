@@ -16,6 +16,13 @@ app = Flask(__name__)
 
 tweets = Tweets()
 
+current_pid = os.getpid()
+lock_target = os.path.dirname( os.path.realpath( __file__ ) )
+lock_target += "/pid.lock"
+target = open( lock_target, "w" )
+target.write( str( current_pid ) )
+target.close()
+
 @app.route( "/voice/", methods = [ "GET", "POST" ] )
 def hello_monkey():
     """Respond to incoming requests."""
@@ -52,4 +59,3 @@ def handle_key():
 
 if __name__ == "__main__":
     app.run( host = "0.0.0.0", debug = True, port = 1337 )
-

@@ -19,6 +19,9 @@ env.user = "ubuntu"
 repo_dir = "/home/ubuntu/hack/twilio-aws-hack"
 
 with cd( repo_dir ):
+    print "Killing previous process"
+    run( "cat pid.lock | xargs kill" )
+
     run( "git reset --hard" )
     run( "touch yeaaaaaaaa" )
     run( "git pull" )
