@@ -24,9 +24,8 @@ class Setup( object ):
         subprocess.call( "rm -rf site-packages", shell = True )
 
         pipfile = "dependencies"
-        target = "site-packages"
         exists_action = "i"
-        install_cmd = "pip install -r %s --target %s --exists-action %s" % ( pipfile, target, exists_action )
+        install_cmd = "pip install -r %s --exists-action %s" % ( pipfile, exists_action )
         subprocess.call( install_cmd, shell = True )
 
     
