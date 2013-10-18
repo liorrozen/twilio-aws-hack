@@ -1,6 +1,10 @@
 import site
 import sys
 import os
+import subprocess
+
+subprocess.call( "cat pid.lock | xargs kill", shell = True )
+
 
 full_path = os.path.realpath(__file__)
 path, file = os.path.split(full_path)
